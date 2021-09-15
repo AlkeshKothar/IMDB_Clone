@@ -1,20 +1,25 @@
 from rest_framework import serializers
-from imdb_app.models import Movie
+from imdb_app.models import WatchList,  StreamPlatfrom, Review
 
-
-class MovieSerializer(serializers.ModelSerializer):
+class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Movie
+        model = Review
         fields = "__all__"
-        #feild = ['name', wite all field]
-        #exclude = ['name', etc etc]
 
-    
-    def validate_name(self, value):
-        if len(value) < 2:
-            raise serializers.ValidationError("Too short")
-        else:
-            return value
+class WatchListSerializer(serializers.ModelSerializer):
+    review = ReviewSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = WatchList
+        fields = "__all__"
+ 
+
+class StreamPlatfromSerializer(serializers.ModelSerializer):
+    watchlist = WatchListSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = StreamPlatfrom
+        fields = "__all__"
 
 
 
