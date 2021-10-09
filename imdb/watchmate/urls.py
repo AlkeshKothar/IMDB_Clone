@@ -11,7 +11,7 @@ schema_view = get_schema_view(
    openapi.Info(
       title="AceInc IMDb API",
       default_version='v1',
-      description="Alkesh Inc a complete backend for IMDb Clone",
+      description="Alkesh AceInc- A complete backend for IMDb Clone",
       terms_of_service="https://www.google.com/policies/terms/",
       contact=openapi.Contact(email="noreply@snippets.vocal"),
       license=openapi.License(name="BSD License"),
